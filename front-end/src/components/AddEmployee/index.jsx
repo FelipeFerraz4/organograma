@@ -1,9 +1,11 @@
+import AddForm from '../AddForm';
 import './style.css';
 
 function AddEmployee() {
     return (
-        <section className="container">
+        <section className="">
             <h3 className="my-5">Adicionar Funcionario</h3>
+            <AddForm />
         </section>
     )
 }
