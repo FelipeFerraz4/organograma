@@ -10,7 +10,7 @@ function SelectInput({
     options,
     placeholder
 }) {
-    console.log(value);
+    // console.log(value);
     function handleChange(event) {
         setValue(event.target.value);
     }

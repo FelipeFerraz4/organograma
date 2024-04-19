@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { maritalStatus, roles } from '../../config/db';
 import SelectInput from '../SelcctInput';
 import TextInput from '../TextInput';
 import './style.css';
 
-function AddForm() {
+function AddForm({employees, setEmployees}) {
     const [name, setName] = useState('');
     const [date, setDate] = useState('');
     const [email, setEmail] = useState('');
@@ -15,6 +16,25 @@ function AddForm() {
     const [role, setRole] = useState('');
     const [maritalStatu, setMaritalStatu] = useState('');
     const [nationality, setNationality] = useState('');
+
+    function handleSubmit() {
+        const newEmployee = {
+            id: employees.length + 1,
+            name: name,
+            date: date,
+            email: email,
+            phone: phone,
+            cpf: cpf,
+            universityIdentifier: universityIdentifier,
+            birthday: birthday,
+            role: role,
+            maritalStatu: maritalStatu,
+            nationality: nationality
+        };
+    
+        setEmployees([...employees, newEmployee]);
+        console.log(employees);
+    }
 
     return(
         <form action="" className="form">
@@ -108,8 +128,19 @@ function AddForm() {
                 placeholder="Qual seu estado cívil"
                 required
             />
+            <button 
+                onClick={handleSubmit} 
+                className="register" 
+                type="submit">
+                    Cadastrar
+            </button>
         </form>
     )
 }
 
 export default AddForm;
+
+AddForm.propTypes = {
+    employees: PropTypes.array, 
+    setEmployees: PropTypes.func
+}
