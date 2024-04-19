@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import AddEmployee from '../../components/AddEmployee';
+import EmployeeCards from '../../components/EmployeesCards';
 import Header from '../../components/Header';
+import './style.css';
 
 function Home() {
     const [employees, setEmployees] = useState([]);
 
     console.log(employees);
-
     return (
         <>
             <Header />
-            <AddEmployee employees={employees} setEmployees={setEmployees} />
-            <h1>Hello World</h1>
-            {employees.map((item) => (
-                <p key={item.name}>{item.name}</p>
-            ))}
+            <main>
+                <AddEmployee employees={employees} setEmployees={setEmployees} />
+                <EmployeeCards employees={employees} />
+            </main>
         </>
     );
 }

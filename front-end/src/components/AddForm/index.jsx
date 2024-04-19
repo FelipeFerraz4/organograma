@@ -21,15 +21,15 @@ function AddForm({employees, setEmployees}) {
         const newEmployee = {
             id: employees.length + 1,
             name: name,
+            nationality: nationality,
+            maritalStatu: maritalStatu,
+            cpf: cpf,
+            birthday: birthday,
+            universityIdentifier: universityIdentifier,
             date: date,
+            role: role,
             email: email,
             phone: phone,
-            cpf: cpf,
-            universityIdentifier: universityIdentifier,
-            birthday: birthday,
-            role: role,
-            maritalStatu: maritalStatu,
-            nationality: nationality
         };
     
         setEmployees([...employees, newEmployee]);
@@ -131,7 +131,7 @@ function AddForm({employees, setEmployees}) {
             <button 
                 onClick={handleSubmit} 
                 className="register" 
-                type="submit">
+                type="button">
                     Cadastrar
             </button>
         </form>

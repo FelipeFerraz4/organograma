@@ -1,0 +1,19 @@
+.employeeCards {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 80vw;
+    margin: 30px;
+}
+
+.cardHome {
+    width: 18rem;
+    margin: 10px;
+}
+
+.titleEmployee {
+    margin-top: 32px;
+}
