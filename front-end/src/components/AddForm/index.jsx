@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { maritalStatus, roles } from '../../config/db';
+import dateFormatting from '../../config/formatting/date';
 import SelectInput from '../SelcctInput';
 import TextInput from '../TextInput';
 import './style.css';
@@ -41,9 +42,9 @@ function AddForm({employees, setEmployees}) {
                 nationality: nationality.trim(),
                 maritalStatu: maritalStatu.trim(),
                 cpf: cpf.trim(),
-                birthday: birthday.trim(),
+                birthday: dateFormatting(birthday.trim()),
                 universityIdentifier: universityIdentifier.trim(),
-                date: date.trim(),
+                date: dateFormatting(date.trim()),
                 role: role.trim(),
                 email: email.trim(),
                 phone: phone.trim(),
