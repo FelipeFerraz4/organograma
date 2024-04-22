@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import nameValidation from '../../config/Validation/name';
 import { maritalStatus, roles } from '../../config/db';
 import SelectInput from '../SelcctInput';
 import TextInput from '../TextInput';
 import './style.css';
+import additionEmployeeValidation from './validation';
 
 function AddForm({employees, setEmployees}) {
     const [name, setName] = useState('');
@@ -19,34 +19,34 @@ function AddForm({employees, setEmployees}) {
     const [nationality, setNationality] = useState('');
 
     function handleSubmit() {
-        if (
-            name === "" && 
-            date === "" && 
-            email === "" && 
-            phone === "" &&
-            cpf === "" &&
-            universityIdentifier === "" &&
-            birthday === "" &&
-            role === "" &&
-            maritalStatu === "" &&
-            nationality === ""
-        ) {
-            console.log('Campos Vazio');
-        } else if (!nameValidation(name)){
-            console.log('Nome não é valido')
+        const validation = additionEmployeeValidation(
+            name, 
+            date, 
+            email, 
+            phone,
+            cpf,
+            universityIdentifier,
+            birthday,
+            role,
+            maritalStatu,
+            nationality
+        )
+
+        if (validation != "valido"){
+            console.log(validation)
         } else {
             const newEmployee = {
                 id: employees.length + 1,
-                name: name,
-                nationality: nationality,
-                maritalStatu: maritalStatu,
-                cpf: cpf,
-                birthday: birthday,
-                universityIdentifier: universityIdentifier,
-                date: date,
-                role: role,
-                email: email,
-                phone: phone,
+                name: name.trim(),
+                nationality: nationality.trim(),
+                maritalStatu: maritalStatu.trim(),
+                cpf: cpf.trim(),
+                birthday: birthday.trim(),
+                universityIdentifier: universityIdentifier.trim(),
+                date: date.trim(),
+                role: role.trim(),
+                email: email.trim(),
+                phone: phone.trim(),
             };
             setEmployees([...employees, newEmployee]);
             console.log(employees);
