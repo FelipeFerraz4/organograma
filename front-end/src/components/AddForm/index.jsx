@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import nameValidation from '../../config/Validation/name';
 import { maritalStatus, roles } from '../../config/db';
 import SelectInput from '../SelcctInput';
 import TextInput from '../TextInput';
@@ -18,22 +19,38 @@ function AddForm({employees, setEmployees}) {
     const [nationality, setNationality] = useState('');
 
     function handleSubmit() {
-        const newEmployee = {
-            id: employees.length + 1,
-            name: name,
-            nationality: nationality,
-            maritalStatu: maritalStatu,
-            cpf: cpf,
-            birthday: birthday,
-            universityIdentifier: universityIdentifier,
-            date: date,
-            role: role,
-            email: email,
-            phone: phone,
-        };
-    
-        setEmployees([...employees, newEmployee]);
-        console.log(employees);
+        if (
+            name === "" && 
+            date === "" && 
+            email === "" && 
+            phone === "" &&
+            cpf === "" &&
+            universityIdentifier === "" &&
+            birthday === "" &&
+            role === "" &&
+            maritalStatu === "" &&
+            nationality === ""
+        ) {
+            console.log('Campos Vazio');
+        } else if (!nameValidation(name)){
+            console.log('Nome não é valido')
+        } else {
+            const newEmployee = {
+                id: employees.length + 1,
+                name: name,
+                nationality: nationality,
+                maritalStatu: maritalStatu,
+                cpf: cpf,
+                birthday: birthday,
+                universityIdentifier: universityIdentifier,
+                date: date,
+                role: role,
+                email: email,
+                phone: phone,
+            };
+            setEmployees([...employees, newEmployee]);
+            console.log(employees);
+        }
     }
 
     return(
