@@ -50,7 +50,6 @@ function AddForm({employees, setEmployees}) {
                 phone: phone.trim(),
             };
             setEmployees([...employees, newEmployee]);
-            console.log(employees);
         }
     }
 
