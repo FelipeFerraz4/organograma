@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { maritalStatus, roles } from '../../config/db';
+import dateFormatting from '../../config/formatting/date';
 import SelectInput from '../SelcctInput';
 import TextInput from '../TextInput';
 import './style.css';
+import additionEmployeeValidation from './validation';
 
 function AddForm({employees, setEmployees}) {
     const [name, setName] = useState('');
@@ -18,22 +20,37 @@ function AddForm({employees, setEmployees}) {
     const [nationality, setNationality] = useState('');
 
     function handleSubmit() {
-        const newEmployee = {
-            id: employees.length + 1,
-            name: name,
-            nationality: nationality,
-            maritalStatu: maritalStatu,
-            cpf: cpf,
-            birthday: birthday,
-            universityIdentifier: universityIdentifier,
-            date: date,
-            role: role,
-            email: email,
-            phone: phone,
-        };
-    
-        setEmployees([...employees, newEmployee]);
-        console.log(employees);
+        const validation = additionEmployeeValidation(
+            name, 
+            date, 
+            email, 
+            phone,
+            cpf,
+            universityIdentifier,
+            birthday,
+            role,
+            maritalStatu,
+            nationality
+        )
+
+        if (validation != "valido"){
+            console.log(validation)
+        } else {
+            const newEmployee = {
+                id: employees.length + 1,
+                name: name.trim(),
+                nationality: nationality.trim(),
+                maritalStatu: maritalStatu.trim(),
+                cpf: cpf.trim(),
+                birthday: dateFormatting(birthday.trim()),
+                universityIdentifier: universityIdentifier.trim(),
+                date: dateFormatting(date.trim()),
+                role: role.trim(),
+                email: email.trim(),
+                phone: phone.trim(),
+            };
+            setEmployees([...employees, newEmployee]);
+        }
     }
 
     return(

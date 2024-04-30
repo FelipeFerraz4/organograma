@@ -7,7 +7,6 @@ import './style.css';
 function Home() {
     const [employees, setEmployees] = useState([]);
 
-    console.log(employees);
     return (
         <>
             <Header />

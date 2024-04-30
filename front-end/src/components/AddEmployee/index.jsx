@@ -5,7 +5,7 @@ import './style.css';
 function AddEmployee({employees, setEmployees}) {
     return (
         <section className="">
-            <h3 className="my-5">Adicionar Funcionario</h3>
+            <h3 className="my-5">Cadastrar Funcionario</h3>
             <AddForm employees={employees} setEmployees={setEmployees} />
         </section>
     )
